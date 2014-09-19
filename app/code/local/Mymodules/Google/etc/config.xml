@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!--
+
+/**
+ * Google services adapter module.
+ *
+ * PHP Version 5
+ *
+ * @package   Mymodules_Google
+ * @author    Rick Buczynski <me@rickbuczynski.com>
+ * @copyright 2014 Rick Buczynski
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+-->
+<config>
+    <modules>
+        <Mymodules_Google>
+            <version>0.0.1</version>
+        </Mymodules_Google>
+    </modules>
+    <default>
+        <google>
+            <backend>
+                <config_ini></config_ini>
+                <private_key>cfaf03477b118924614f3f3aaf0a1ccf392e31ec-privatekey.p12</private_key>
+            </backend>
+        </google>
+    </default>
+    <global>
+        <helpers>
+            <class>Mymodules_Google_Helper</class>
+        </helpers>
+        <blocks>
+            <class>Mymodules_Google_Block</class>
+        </blocks>
+        <models>
+            <google>
+                <class>Mymodules_Google_Model</class>
+                <resourceModel>google_resource</resourceModel>
+            </google>
+            <google_resource>
+                <class>Mymodules_Google_Model_Resource</class>
+            </google_resource>
+        </models>
+    </global>
+</config>
