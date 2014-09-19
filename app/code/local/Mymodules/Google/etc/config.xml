@@ -40,7 +40,7 @@
         <google>
             <backend>
                 <config_ini></config_ini>
-                <private_key>cfaf03477b118924614f3f3aaf0a1ccf392e31ec-privatekey.p12</private_key>
+                <private_key>your_private_key.p12</private_key>
             </backend>
         </google>
     </default>
