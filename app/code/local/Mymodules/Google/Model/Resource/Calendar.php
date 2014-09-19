@@ -126,6 +126,33 @@ class Mymodules_Google_Model_Resource_Calendar
     }
 
     /**
+     * Add ownership to a calendar. This method solves the problem
+     * presented by service accounts when trying to create secondary
+     * calendars on behalf of other users.
+     *
+     * @see    https://groups.google.com/forum/#!topic/google-calendar-api/IZOnr79a-jk
+     * 
+     * @param  Mage_Core_Model_Abstract $model The calendar model.
+     * 
+     * @return Mymodules_Google_Model_Resource_Calendar
+     */
+    protected function _setOwnership(Mage_Core_Model_Abstract $model)
+    {
+        if ( ($target = $model->getOwnership()) ) {
+            $acl = Mage::getModel('google/calendar_acl')
+                ->setCalendarId($model->getId())
+                ->setRole('owner')
+                ->setScope('user', $target)
+                ->save();
+
+            // Clear when done
+            $model->unsOwnership();
+        }
+
+        return $this;
+    }
+
+    /**
      * Shorthand method to add an event to a calendar.
      *
      * @param Mage_Core_Model_Abstract $model             The calendar model.
@@ -321,6 +348,8 @@ class Mymodules_Google_Model_Resource_Calendar
                     $results = $this->_getWriteAdapter()
                         ->update('calendarList', $model);
                 }
+
+                $this->_setOwnership($model);
 
                 unset($results);
             }
